@@ -1,3 +1,4 @@
+import 'package:appbesaz/modules/settingsModule.dart';
 import 'package:flutter/material.dart';
 import 'package:appbesaz/modules/ListModule/listModule.dart';
 import 'package:appbesaz/modules/callModule.dart';
@@ -23,7 +24,7 @@ void goUp(int index) {
 class Module extends StatefulWidget {
   int id;
   int index;
-  int type; // 1 for call module, 2 for site module, 3 for list module, ..... to be continued.
+  int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module ..... to be continued.
   Module({required this.id, required this.index, required this.type}) {
     moduleList.add(this);
   }
@@ -39,7 +40,7 @@ class ModuleState extends State<Module> {
   Widget build(BuildContext context) {
     // TODO: implement build
     switch (widget.type) {
-      case 1:
+      case 1: 
         {
           CallModule cm = CallModule(
               id: widget.id,
@@ -75,6 +76,26 @@ class ModuleState extends State<Module> {
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => ls));
+              },
+              child: Icon(Icons.list));
+        }
+      case 4:
+        {
+          SettingsModule sm = SettingsModule(
+              id: widget.id,
+              index: widget.index,
+              font: findSettingsModuleById(widget.id)!.font,
+              fontSize: findSettingsModuleById(widget.id)!.fontSize,
+              isBold: findSettingsModuleById(widget.id)!.isBold,
+              textColor: findSettingsModuleById(widget.id)!.textColor,
+              appBarColor: findSettingsModuleById(widget.id)!.appBarColor,
+              backgroundColor:
+                  findSettingsModuleById(widget.id)!.backgroundColor,
+              imageName: findSettingsModuleById(widget.id)!.imageName);
+              return ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => sm));
               },
               child: Icon(Icons.list));
         }
