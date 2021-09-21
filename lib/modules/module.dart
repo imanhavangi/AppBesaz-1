@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:appbesaz/modules/ListModule/listModule.dart';
 import 'package:appbesaz/modules/callModule.dart';
 import 'package:appbesaz/modules/siteModule.dart';
+import 'AparatModule/aparatModule.dart';
 
 List<Module> moduleList = [];
+
 Module? findModuleByIndex(int index) {
   for (Module a in moduleList) {
     if (a.index == index) return a;
@@ -24,7 +26,7 @@ void goUp(int index) {
 class Module extends StatefulWidget {
   int id;
   int index;
-  int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module ..... to be continued.
+  int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module, 5 aparat module ..... to be continued.
   Module({required this.id, required this.index, required this.type}) {
     moduleList.add(this);
   }
@@ -98,6 +100,20 @@ class ModuleState extends State<Module> {
                     context, MaterialPageRoute(builder: (context) => sm));
               },
               child: Icon(Icons.list));
+        }
+      case 5:
+        {
+          AparatModule am = AparatModule(
+            id: widget.id,
+            index: widget.index,
+            link: findAparatModuleById(widget.id)!.link);
+          return ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => am));
+                },
+            child: Icon(Icons.web),
+          );
         }
       default:
         return Container();
