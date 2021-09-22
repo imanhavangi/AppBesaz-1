@@ -1,3 +1,4 @@
+import 'package:appbesaz/modules/AparatModule/aparatModule.dart';
 import 'package:flutter/material.dart';
 import 'package:appbesaz/modules/ListModule/listModule.dart';
 import 'package:appbesaz/modules/ListModule/listTileModule.dart';
@@ -75,20 +76,22 @@ class _MyHomePageState extends State<MyHomePage> {
           print(appbarColor.toString());
 
           setState(() {
-            SettingsModule a = new SettingsModule(
-              id: 2,
-              index: 2,
-              font: 0,
-              fontSize: 11,
-              isBold: true,
-              textColor: Colors.black,
-              appBarColor: Colors.blue,
-              backgroundColor: Colors.white,
-              imageName: "",
-              mainSetState: () {
-                setState(() {});
-              },
-            );
+            // SettingsModule a = new SettingsModule(
+            //   id: 2,
+            //   index: 2,
+            //   font: 0,
+            //   fontSize: 11,
+            //   isBold: true,
+            //   textColor: Colors.black,
+            //   appBarColor: Colors.blue,
+            //   backgroundColor: Colors.white,
+            //   imageName: "",
+            //   mainSetState: () {
+            //     setState(() {});
+            //   },
+            // );
+            AparatModule aparatModule = new AparatModule(id: 2, index: 2, link: "salam");
+
           });
         },
         tooltip: 'add call module',
