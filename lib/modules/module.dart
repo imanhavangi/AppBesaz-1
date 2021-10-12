@@ -1,4 +1,6 @@
+import 'package:appbesaz/modules/AboutusModule/aboutusModule.dart';
 import 'package:appbesaz/modules/settingsModule.dart';
+import 'package:appbesaz/widgets/cardWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:appbesaz/modules/ListModule/listModule.dart';
 import 'package:appbesaz/modules/callModule.dart';
@@ -8,7 +10,7 @@ import 'AparatModule/aparatModule.dart';
 List<Module> moduleList = [];
 
 Module? findModuleByIndex(int index) {
-  for (Module a in moduleList) {
+  for (Module a in moduleList) { // (0,0,..) , (1,2,...) (2,1,...)
     if (a.index == index) return a;
   }
 }
@@ -27,8 +29,14 @@ class Module extends StatefulWidget {
   int id;
   int index;
   int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module, 5 aparat module ..... to be continued.
-  Module({required this.id, required this.index, required this.type}) {
+  String title;
+  String imageName;
+  bool visibility;
+  Module({required this.id, required this.index, required this.type, this.title = '', this.imageName = '', this.visibility = true}) {
     moduleList.add(this);
+  }
+  void setVisibility(bool newVisibility) {
+    visibility = newVisibility;
   }
   @override
   State<StatefulWidget> createState() {
@@ -47,6 +55,7 @@ class ModuleState extends State<Module> {
           CallModule cm = CallModule(
               id: widget.id,
               index: widget.index,
+              title: widget.title,
               phoneNumber: findCallModuleById(widget.id)!.phoneNumber);
           return ElevatedButton(
               onPressed: () {
@@ -60,6 +69,7 @@ class ModuleState extends State<Module> {
           SiteModule sm = SiteModule(
               id: widget.id,
               index: widget.index,
+              title: widget.title,
               siteAddress: findSiteModuleById(widget.id)!.siteAddress);
           return ElevatedButton(
               onPressed: () {
@@ -106,12 +116,34 @@ class ModuleState extends State<Module> {
           AparatModule am = AparatModule(
             id: widget.id,
             index: widget.index,
-            link: findAparatModuleById(widget.id)!.link);
+            title: widget.title,
+            graphics: findAparatModuleById(widget.id)!.graphics,
+            aparatType: findAparatModuleById(widget.id)!.aparatType,
+            data: findAparatModuleById(widget.id)!.data);
           return ElevatedButton(
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => am));
                 },
+            child: Icon(Icons.web),
+          );
+        }
+      case 15:
+        {
+          AboutusModule au = AboutusModule(
+            id: widget.id,
+            index: widget.index,
+            graphics: findAboutusModuleById(widget.id)!.graphics,
+            title: findAboutusModuleById(widget.id)!.title,
+            text: findAboutusModuleById(widget.id)!.text,
+            cardWidgetList: findAboutusModuleById(widget.id)!.cardWidgetList,
+            iconLinkWidgetList: findAboutusModuleById(widget.id)!.iconLinkWidgetList,
+          );
+          return ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => au));
+            },
             child: Icon(Icons.web),
           );
         }

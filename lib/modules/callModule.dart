@@ -12,8 +12,8 @@ CallModule? findCallModuleById(int id) {
 class CallModule extends Module {
   final String phoneNumber;
 
-  CallModule({required int id, required int index, required this.phoneNumber})
-      : super(id: id, index: index, type: 1) {
+  CallModule({required int id, required int index, required String title, required this.phoneNumber})
+      : super(id: id, index: index, title: title, type: 1) {
     callModuleList.add(this);
   }
   @override

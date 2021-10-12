@@ -12,8 +12,8 @@ SiteModule? findSiteModuleById(int id) {
 class SiteModule extends Module {
   String siteAddress;
 
-  SiteModule({required int id, required int index, required this.siteAddress})
-      : super(id: id, index: index, type: 2) {
+  SiteModule({required int id, required int index, required String title, required this.siteAddress})
+      : super(id: id, index: index, title: title, type: 2) {
     siteModuleList.add(this);
   }
   @override
