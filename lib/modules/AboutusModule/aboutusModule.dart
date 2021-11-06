@@ -13,11 +13,11 @@ AboutusModule? findAboutusModuleById(int id) {
 }
 
 class AboutusModule extends Module {
-  int graphics;
-  String title;
-  String text;
-  List<CardWidget> cardWidgetList;
-  List<IconLinkWidget> iconLinkWidgetList;
+  final int graphics;
+  final String title;
+  final String text;
+  final List<CardWidget> cardWidgetList;
+  final List<IconLinkWidget> iconLinkWidgetList;
   // List<String> _list;
 
   AboutusModule(
@@ -40,14 +40,18 @@ class AboutusModule extends Module {
 class AboutusModuleState extends State<AboutusModule> {
   @override
   Widget build(BuildContext context) {
+    const double kPageTitrFontSize = 40;
+    const double kTitleFontSize = 25;
+    const double kTextFontSize = 15;
+    const double kDefaultPadding = 10;
     Widget titleWidget = Text(
       widget.title,
-      style: TextStyle(fontSize: 25, fontFamily: 'Aviny'),
+      style: TextStyle(fontSize: kTitleFontSize, fontFamily: 'Aviny'),
       textDirection: TextDirection.rtl,
     );
     Widget textWidget = Text(
       widget.text,
-      style: TextStyle(fontSize: 15),
+      style: TextStyle(fontSize: kTextFontSize),
       textDirection: TextDirection.rtl,
     );
     Widget cardWidget = ListView.builder(
@@ -56,13 +60,13 @@ class AboutusModuleState extends State<AboutusModule> {
       itemCount: widget.cardWidgetList.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.only(bottom: 10),
+          padding: EdgeInsets.only(bottom: kDefaultPadding),
           child: widget.cardWidgetList[index],
         );
       },
     );
     Widget iconsWidget = ListView.builder(
-      padding: EdgeInsets.only(left: 20),
+      padding: EdgeInsets.only(left: kDefaultPadding),
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemCount: widget.iconLinkWidgetList.length,
@@ -70,7 +74,7 @@ class AboutusModuleState extends State<AboutusModule> {
         return Container(
           // width: double.infinity,
           // alignment: Alignment.center,
-          padding: EdgeInsets.only(right: 15),
+          padding: EdgeInsets.only(right: kDefaultPadding),
           child: widget.iconLinkWidgetList[index],
         );
       },
@@ -100,7 +104,8 @@ class AboutusModuleState extends State<AboutusModule> {
                       child: Text(
                         'درباره ما گرافیک 1',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 40, fontFamily: 'Aviny'),
+                        style: TextStyle(
+                            fontSize: kPageTitrFontSize, fontFamily: 'Aviny'),
                       ),
                     ),
                   ),
@@ -322,8 +327,7 @@ class AboutusModuleState extends State<AboutusModule> {
                         color: Colors.deepPurple),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * .01
-                        ),
+                          top: MediaQuery.of(context).size.height * .01),
                       child: Text(
                         'درباره ما گرافیک 4',
                         textAlign: TextAlign.center,
@@ -340,52 +344,52 @@ class AboutusModuleState extends State<AboutusModule> {
                         top: MediaQuery.of(context).size.height * .18,
                         right: 35,
                         left: 35),
-                    child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: MediaQuery.of(context).size.height * .25,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.black54),
-                                borderRadius: BorderRadius.all(Radius.circular(15))),
-                            padding: EdgeInsets.only(right: 20),
-                            child: ListView(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(right: 35, left: 30),
-                                  child: titleWidget,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 35, left: 30),
-                                  child: textWidget,
-                                ),
-                              ],
+                    child: Column(children: <Widget>[
+                      Container(
+                        height: MediaQuery.of(context).size.height * .25,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black54),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        padding: EdgeInsets.only(right: 20),
+                        child: ListView(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(right: 35, left: 30),
+                              child: titleWidget,
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * .01,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * .3,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(color: Colors.black54),
-                                borderRadius: BorderRadius.all(Radius.circular(15))),
-                            padding:
-                                EdgeInsets.only(top: 20, right: 25, left: 25),
-                            child: cardWidget,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * .02,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height * .1,
-                            child: iconsWidget,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * .01,
-                          ),
-                        ]),
+                            Padding(
+                              padding: EdgeInsets.only(right: 35, left: 30),
+                              child: textWidget,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .01,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * .3,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black54),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        padding: EdgeInsets.only(top: 20, right: 25, left: 25),
+                        child: cardWidget,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .02,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * .1,
+                        child: iconsWidget,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .01,
+                      ),
+                    ]),
                   ),
                 ),
               ],

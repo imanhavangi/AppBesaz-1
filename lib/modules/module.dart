@@ -26,11 +26,11 @@ void goUp(int index) {
 }
 
 class Module extends StatefulWidget {
-  int id;
+  final int id;
   int index;
-  int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module, 5 aparat module ..... to be continued.
-  String title;
-  String imageName;
+  final int type; // 1 for call module, 2 for site module, 3 for list module, 4 for settings module, 5 aparat module ..... to be continued.
+  final String title;
+  final String imageName;
   bool visibility;
   Module({required this.id, required this.index, required this.type, this.title = '', this.imageName = '', this.visibility = true}) {
     moduleList.add(this);
@@ -117,7 +117,8 @@ class ModuleState extends State<Module> {
             id: widget.id,
             index: widget.index,
             title: widget.title,
-            graphics: findAparatModuleById(widget.id)!.graphics,
+            uiList: findAparatModuleById(widget.id)!.uiList,
+            uiOne: findAparatModuleById(widget.id)!.uiList,
             aparatType: findAparatModuleById(widget.id)!.aparatType,
             data: findAparatModuleById(widget.id)!.data);
           return ElevatedButton(

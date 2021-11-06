@@ -103,7 +103,7 @@ class ContentModuleState extends State<ContentModule> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20)),
                                   image: DecorationImage(
-                                      image: AssetImage('youtube.jpg')),
+                                      image: AssetImage('assets/youtube.jpg')),
                                 ),
                               ),
                             ],
@@ -191,7 +191,7 @@ class ContentModuleState extends State<ContentModule> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20)),
                                   image: DecorationImage(
-                                      image: AssetImage('youtube.jpg')),
+                                      image: AssetImage('assets/youtube.jpg')),
                                 ),
                               ),
                             ],
@@ -268,7 +268,7 @@ class ContentModuleState extends State<ContentModule> {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
-                                    image: AssetImage('youtube.jpg')),
+                                    image: AssetImage('assets/youtube.jpg')),
                               ),
                             ),
                             SizedBox(height: 5),
@@ -344,9 +344,9 @@ class ContentModuleState extends State<ContentModule> {
                               decoration: BoxDecoration(
                                 // borderRadius: BorderRadius.all(Radius.circular(20)),
                                 image: DecorationImage(
-                                    fit:BoxFit.cover,
-                                    image: AssetImage('back1.jpg'), opacity: 0.8),
-
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('assets/back1.jpg'),
+                                    opacity: 0.8),
                               ),
                             ),
                             Container(
